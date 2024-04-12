@@ -170,3 +170,41 @@ static void DisplayRecipe(ScaledRecipe displayRecipe)
         Console.WriteLine($"{i + 1}. {displayRecipe.Steps[i].Description}");
     }
 }
+// Method to scale a recipe
+static void ScaleRecipe()
+{
+    // Check if recipe data is present
+    if (recipe.Ingredients == null)
+    {
+        Console.WriteLine("No recipe entered yet.");
+        return;
+    }
+
+    // Prompt user for scaling factor
+    Console.Write("\nEnter the scaling factor (0.5, 2, or 3): ");
+    double factor = double.Parse(Console.ReadLine());
+
+    // Make a copy of the recipe to update the scaled version
+    scaledRecipe = new ScaledRecipe
+    {
+        Name = recipe.Name,
+        Ingredients = new Ingredient[recipe.Ingredients.Length],
+        Steps = recipe.Steps // Steps remain the same for scaled recipe
+    };
+
+    // Scale the ingredients
+    for (int i = 0; i < recipe.Ingredients.Length; i++)
+    {
+        scaledRecipe.Ingredients[i] = new Ingredient
+        {
+            Name = recipe.Ingredients[i].Name,
+            Quantity = recipe.Ingredients[i].Quantity * factor,
+            Unit = recipe.Ingredients[i].Unit
+        };
+    }
+
+    // Confirm successful scaling of recipe
+    Console.WriteLine("Recipe scaled successfully.");
+    // Display the scaled recipe
+    DisplayRecipe(scaledRecipe);
+}
