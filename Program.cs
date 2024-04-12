@@ -65,3 +65,53 @@ namespace RecipeBook
     }
 }
 
+// Method to enter details for a new recipe
+static void EnterRecipe()
+{
+    Console.WriteLine("\nEnter details for the recipe:");
+
+    // Prompt user to enter recipe name
+    Console.WriteLine("\nEnter name of the recipe:");
+    recipe.Name = Console.ReadLine(); // Set the recipe name
+
+    // Prompt user to enter number of ingredients
+    Console.Write("Enter the number of ingredients: ");
+    int numIngredients = int.Parse(Console.ReadLine());
+    Ingredient[] ingredients = new Ingredient[numIngredients];
+
+    // Loop to input details for each ingredient
+    for (int i = 0; i < numIngredients; i++)
+    {
+        Console.WriteLine($"Enter details for ingredient {i + 1}:");
+        Console.Write("Name: ");
+        string name = Console.ReadLine();
+        Console.Write("Quantity: ");
+        double quantity = double.Parse(Console.ReadLine());
+        Console.Write("Unit: ");
+        string unit = Console.ReadLine();
+
+        ingredients[i] = new Ingredient { Name = name, Quantity = quantity, Unit = unit };
+    }
+
+    // Prompt user to enter number of steps
+    Console.Write("Enter the number of steps: ");
+    int numSteps = int.Parse(Console.ReadLine());
+    Step[] steps = new Step[numSteps];
+
+    // Loop to input details for each step
+    for (int i = 0; i < numSteps; i++)
+    {
+        Console.WriteLine($"Enter details for step {i + 1}:");
+        Console.Write("Description: ");
+        string description = Console.ReadLine();
+
+        steps[i] = new Step { Description = description };
+    }
+
+    // Set the ingredients and steps for the recipe
+    recipe.Ingredients = ingredients;
+    recipe.Steps = steps;
+
+    // Confirm successful entry of recipe
+    Console.WriteLine("Recipe entered successfully.");
+}
