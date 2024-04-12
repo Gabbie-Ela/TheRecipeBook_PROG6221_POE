@@ -208,3 +208,15 @@ static void ScaleRecipe()
     // Display the scaled recipe
     DisplayRecipe(scaledRecipe);
 }
+        // Method to delete recipe data
+        static void DeleteRecipeData()
+        {
+            // Reset recipe data and scaled recipe data
+            recipe = new Recipe();
+            scaledRecipe = null;
+
+            Console.WriteLine("Recipe deleted successfully.");
+            Console.WriteLine("\n THANK YOU FOR USING THE RECIPE BOOK");
+        }
+    }
+}
