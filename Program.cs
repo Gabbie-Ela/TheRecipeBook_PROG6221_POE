@@ -115,3 +115,58 @@ static void EnterRecipe()
     // Confirm successful entry of recipe
     Console.WriteLine("Recipe entered successfully.");
 }
+// Method to display a recipe
+static void DisplayRecipe(Recipe displayRecipe)
+{
+    // Check if recipe data is present
+    if (displayRecipe.Ingredients == null || displayRecipe.Steps == null)
+    {
+        Console.WriteLine("No recipe entered yet.");
+        return;
+    }
+
+    // Display recipe name
+    Console.WriteLine($"\nRecipe Name: {displayRecipe.Name}");
+
+    // Display ingredients
+    Console.WriteLine("Ingredients:");
+    foreach (var ingredient in displayRecipe.Ingredients)
+    {
+        Console.WriteLine($"- {ingredient.Quantity} {ingredient.Unit} of {ingredient.Name}");
+    }
+
+    // Display steps
+    Console.WriteLine("\nSteps:");
+    for (int i = 0; i < displayRecipe.Steps.Length; i++)
+    {
+        Console.WriteLine($"{i + 1}. {displayRecipe.Steps[i].Description}");
+    }
+}
+
+// Overloaded method to display a scaled recipe
+static void DisplayRecipe(ScaledRecipe displayRecipe)
+{
+    // Check if recipe data is present
+    if (displayRecipe.Ingredients == null || displayRecipe.Steps == null)
+    {
+        Console.WriteLine("No recipe entered yet.");
+        return;
+    }
+
+    // Display recipe name
+    Console.WriteLine($"\nRecipe Name: {displayRecipe.Name}");
+
+    // Display ingredients
+    Console.WriteLine("Ingredients:");
+    foreach (var ingredient in displayRecipe.Ingredients)
+    {
+        Console.WriteLine($"- {ingredient.Quantity} {ingredient.Unit} of {ingredient.Name}");
+    }
+
+    // Display steps
+    Console.WriteLine("\nSteps:");
+    for (int i = 0; i < displayRecipe.Steps.Length; i++)
+    {
+        Console.WriteLine($"{i + 1}. {displayRecipe.Steps[i].Description}");
+    }
+}
